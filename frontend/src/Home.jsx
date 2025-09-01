@@ -20,7 +20,7 @@ function Home() {
     try {
       const token = localStorage.getItem("token");
       const showTasks = await axios.get(
-        "http://localhost:3000/tasks/showTasks",
+        "https://taskmanager-70vx.onrender.com/tasks/showTasks",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ function Home() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:3000/tasks/add",
+        "https://taskmanager-70vx.onrender.com/tasks/add",
         { title: addTask },
         {
           headers: {
@@ -50,7 +50,7 @@ function Home() {
       );
       if (response.data.success) {
         setTasks([...tasks, response.data.task]);
-        toast.success("Task Added",{position:"top-right"})
+        toast.success("Task Added", { position: "top-right" });
         setAddTask("");
       }
     } catch (err) {
@@ -65,7 +65,7 @@ function Home() {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.delete(
-        `http://localhost:3000/tasks/delete/${taskId}`,
+        `https://taskmanager-70vx.onrender.com/tasks/delete/${taskId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,7 +76,7 @@ function Home() {
       console.log(res.data);
       if (res.data.success) {
         setTasks(tasks.filter((task) => task._id !== taskId));
-        toast.success("Task deleted",{position:"top-right"})
+        toast.success("Task deleted", { position: "top-right" });
       }
     } catch (error) {}
   };
@@ -84,7 +84,7 @@ function Home() {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.put(
-        `http://localhost:3000/tasks/completed/${taskId}`,
+        `https://taskmanager-70vx.onrender.com/tasks/completed/${taskId}`,
         {},
         {
           headers: {
@@ -101,7 +101,7 @@ function Home() {
               : task
           )
         );
-        toast.info(res.data.message,{position:"top-right"});
+        toast.info(res.data.message, { position: "top-right" });
       }
     } catch (err) {}
   };
@@ -114,7 +114,10 @@ function Home() {
   return (
     <>
       <nav className="navbar navbar-light bg-light px-4 mb-4 d-flex justify-content-between">
-        <span className="navbar-brand mb-0 h1" style={{color:"Blue"}}> <span style={{color:"Black"}}>Welcome,</span> {username}</span>
+        <span className="navbar-brand mb-0 h1" style={{ color: "Blue" }}>
+          {" "}
+          <span style={{ color: "Black" }}>Welcome,</span> {username}
+        </span>
         <button className="btn btn-danger" onClick={handleLogout}>
           Logout
         </button>

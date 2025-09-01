@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 function Login() {
-  const [username, setUsername] = useState("")
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/login",
+        "https://taskmanager-70vx.onrender.com/login",
         {
           username,
           password,
@@ -34,10 +34,12 @@ function Login() {
         navigate("/home");
       }
       if (!success) {
-      toast.error(response.data.message, { position: "top-right" });
-    }
+        toast.error(response.data.message, { position: "top-right" });
+      }
     } catch (err) {
-        toast.error(`somethimg went wrong${err.message}`,{position:"top-right"})
+      toast.error(`somethimg went wrong${err.message}`, {
+        position: "top-right",
+      });
     }
   };
 
@@ -84,8 +86,10 @@ function Login() {
               </button>
             </form>
             <div className="mt-2">
-                If you don't have account go to &nbsp;
-              <Link to="/signup" style={{fontSize:"18px"}} >signup</Link>
+              If you don't have account go to &nbsp;
+              <Link to="/signup" style={{ fontSize: "18px" }}>
+                signup
+              </Link>
             </div>
           </div>
           <div className="col-1"></div>
@@ -100,5 +104,5 @@ function Login() {
       </div>
     </>
   );
-};
+}
 export default Login;

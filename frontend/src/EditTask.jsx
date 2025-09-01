@@ -13,7 +13,7 @@ function EditTask() {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:3000/tasks/getTask/${taskId}`,
+          `https://taskmanager-70vx.onrender.com/tasks/getTask/${taskId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -30,7 +30,7 @@ function EditTask() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `http://localhost:3000/tasks/update/${taskId}`,
+        `https://taskmanager-70vx.onrender.com/tasks/update/${taskId}`,
         { title },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -38,7 +38,7 @@ function EditTask() {
       );
       console.log(res.data);
       if (res.data.success) {
-        toast.success("Task updated",{position:"top-right"});
+        toast.success("Task updated", { position: "top-right" });
         navigate("/home");
       }
     } catch (err) {}
@@ -89,7 +89,8 @@ function EditTask() {
         </button>
       </form>
     </div>
-  );s
+  );
+  s;
 }
 
 export default EditTask;

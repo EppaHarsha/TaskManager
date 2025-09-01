@@ -14,7 +14,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/signup",
+        "https://taskmanager-70vx.onrender.com/signup",
         {
           username,
           email,
