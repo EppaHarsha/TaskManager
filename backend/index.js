@@ -9,7 +9,7 @@ const MONGO_URL = process.env.MONGO_URL;
 const cors = require("cors");
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://task-manager-w4qo-git-main-harshas-projects-296b3f20.vercel.app",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true,
   })
