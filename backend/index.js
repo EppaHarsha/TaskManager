@@ -7,14 +7,26 @@ const app = express();
 app.use(express.json());
 const MONGO_URL = process.env.MONGO_URL;
 const cors = require("cors");
+const allowedOrigins = [
+  "http://localhost:5173", 
+  "https://task-manager-w4qo.vercel.app", 
+  "https://task-manager-w4qo-git-main-harshas-projects-296b3f20.vercel.app", 
+  "https://task-manager-w4qo-eqjgcheo0-harshas-projects-296b3f20.vercel.app", 
+];
+
 app.use(
   cors({
-    origin: "https://task-manager-w4qo-git-main-harshas-projects-296b3f20.vercel.app",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    credentials: true,
+    credentials: true, 
   })
 );
-
 function db() {
   mongoose
     .connect(MONGO_URL)
@@ -27,7 +39,7 @@ function db() {
 }
 
 app.use("/", authRouter);
-app.use("/tasks",taskRouter)
+app.use("/tasks", taskRouter);
 
 app.listen(3000, () => {
   console.log("server is running on port 3000");
