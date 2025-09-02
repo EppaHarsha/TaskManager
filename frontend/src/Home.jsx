@@ -20,7 +20,7 @@ function Home() {
     try {
       const token = localStorage.getItem("token");
       const showTasks = await axios.get(
-        "https://taskmanager-70vx.onrender.com/tasks/showTasks",
+        "https://taskmanager-5yma.onrender.com/tasks/showTasks",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ function Home() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://taskmanager-70vx.onrender.com/tasks/add",
+        "https://taskmanager-5yma.onrender.com/tasks/add",
         { title: addTask },
         {
           headers: {
@@ -65,7 +65,7 @@ function Home() {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.delete(
-        `https://taskmanager-70vx.onrender.com/tasks/delete/${taskId}`,
+        `https://taskmanager-5yma.onrender.com/delete/${taskId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ function Home() {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.put(
-        `https://taskmanager-70vx.onrender.com/tasks/completed/${taskId}`,
+        `https://taskmanager-5yma.onrender.com/tasks/completed/${taskId}`,
         {},
         {
           headers: {

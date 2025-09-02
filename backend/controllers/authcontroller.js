@@ -5,6 +5,10 @@ const { createSecretToken } = require("../secretToken.js");
 module.exports.signup = async (req, res) => {
   const { username, email, password } = req.body;
 
+    if(username===""||email==="" || password===""){
+      return res.json({message:"Enter Details",success:false})
+    }
+
   const existingUser = await User.findOne({ username });
 
   try {

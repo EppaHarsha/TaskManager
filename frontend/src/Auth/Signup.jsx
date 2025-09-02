@@ -11,10 +11,18 @@ function Signup() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+
+    if (!form.checkValidity()) {
+      e.stopPropagation();
+      form.classList.add("was-validated");
+      return;
+    }
+    form.classList.add("was-validated");
 
     try {
       const response = await axios.post(
-        "https://taskmanager-70vx.onrender.com/signup",
+        "https://taskmanager-5yma.onrender.com/signup",
         {
           username,
           email,
@@ -52,7 +60,11 @@ function Signup() {
         </div>
         <div className="row">
           <div className="col-6">
-            <form action="">
+            <form
+              className="needs-validation"
+              noValidate
+              onSubmit={handleSubmit}
+            >
               <div className="mt-4">
                 <label className="form-label mb-2">UserName</label>
                 <input
@@ -61,7 +73,11 @@ function Signup() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className="form-control"
+                  required
                 />
+                <div className="invalid-feedback">
+                  Please provide a username.
+                </div>
               </div>
               <div className="mt-2">
                 <label className="form-label mb-2">Email</label>
@@ -71,7 +87,11 @@ function Signup() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
+                  required
                 />
+                <div className="invalid-feedback">
+                  Please provide a valid email
+                </div>
               </div>
               <div className="mt-2 mb-4">
                 <label className="form-label mb-2">Password</label>
@@ -82,10 +102,13 @@ function Signup() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   minLength={6}
+                  required
                 />
+                <div className="invalid-feedback">
+                  Please provide a valid password
+                </div>
               </div>
               <button
-                onClick={handleSubmit}
                 className="btn btn-primary"
                 style={{ fontSize: "17px" }}
                 type="submit"

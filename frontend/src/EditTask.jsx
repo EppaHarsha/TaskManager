@@ -13,7 +13,7 @@ function EditTask() {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `https://taskmanager-70vx.onrender.com/tasks/getTask/${taskId}`,
+          `https://taskmanager-5yma.onrender.com/tasks/getTask/${taskId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -30,7 +30,7 @@ function EditTask() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `https://taskmanager-70vx.onrender.com/tasks/update/${taskId}`,
+        `https://taskmanager-5yma.onrender.com/tasks/update/${taskId}`,
         { title },
         {
           headers: { Authorization: `Bearer ${token}` },

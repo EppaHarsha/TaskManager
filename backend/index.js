@@ -8,10 +8,8 @@ app.use(express.json());
 const MONGO_URL = process.env.MONGO_URL;
 const cors = require("cors");
 const allowedOrigins = [
-  "http://localhost:5173", 
-  "https://task-manager-w4qo.vercel.app", 
-  "https://task-manager-w4qo-git-main-harshas-projects-296b3f20.vercel.app", 
-  "https://task-manager-w4qo-eqjgcheo0-harshas-projects-296b3f20.vercel.app", 
+  "http://localhost:5173",
+  "https://task-manager-one-silk.vercel.app",
 ];
 
 app.use(
@@ -24,7 +22,7 @@ app.use(
       }
     },
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    credentials: true, 
+    credentials: true,
   })
 );
 function db() {
