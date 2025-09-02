@@ -10,6 +10,7 @@ const cors = require("cors");
 const allowedOrigins = [
   "http://localhost:5173",
   "https://task-manager-one-silk.vercel.app",
+  "https://taskmanager-5yma.onrender.com",
 ];
 
 app.use(
