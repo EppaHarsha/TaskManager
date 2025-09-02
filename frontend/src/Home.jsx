@@ -65,7 +65,7 @@ function Home() {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.delete(
-        `https://taskmanager-5yma.onrender.com/delete/${taskId}`,
+        `https://taskmanager-5yma.onrender.com/tasks/delete/${taskId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
