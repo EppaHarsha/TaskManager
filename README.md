@@ -59,7 +59,7 @@ cd task-manager
 - JWT_SECRET=your_secret_key
 
 ### 4. Run the app
-- Backend
+### Backend
 - npm start
 
 ### Frontend
